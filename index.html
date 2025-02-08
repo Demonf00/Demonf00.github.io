@@ -1,49 +1,195 @@
 <!DOCTYPE html>
-<!-- <html lang="en"> -->
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Search wizardry!</title>
-	<style>
-		label, input, button {
-			margin: 8px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Dynamic Graph Background Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset and basic styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-screen canvas for dynamic background */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Place behind other elements */
+    }
+
+    /* Content container (overlaid on the background) */
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p.intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Tabs navigation styles */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .tabs li {
+      padding: 10px 20px;
+      margin: 0 5px;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .tabs li.active,
+    .tabs li:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Tab content styles */
+    .tab-content {
+      display: none;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
-
-    
-
 <body>
+  <!-- Canvas element for the dynamic background graph -->
+  <canvas id="bgCanvas"></canvas>
 
+  <!-- Main content overlay -->
+  <div class="container">
+    <!-- Article Title -->
+    <h1>My Dynamic Graph Background Website</h1>
+    <p class="intro">This is a sample article with a dynamic graph background and tabbed content.</p>
 
-    <form action="http://localhost:8000/" method="GET">
-        <h2>xihuan tuzitou</h2>
-        <h2>x喜欢兔子头</h2>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
-        <br>
-        <label for="pw">Password:</label>
-        <input type="password" name="pw" id="pw">
-        <br>
-        <button type=submit>Log in!</button>
-    </form>
+    <!-- Tabs Navigation -->
+    <ul class="tabs">
+      <li class="active" data-tab="tab1">Tab 1</li>
+      <li data-tab="tab2">Tab 2</li>
+      <li data-tab="tab3">Tab 3</li>
+    </ul>
 
-	<form action="http://www.google.com/search" method="GET">
-		<label>Search term:
-			<input type="text" name="q">
-		</label>
-		<br>
-		<label>Corpus:
-			<select name="tbm">
-				<option selected value="">Regular</option>
-				<option value="isch">Images</option>
-				<option value="bks">Books</option>
-				<option value="nws">News</option>
-			</select>
-		</label>
-		<br>
-		<button type="submit">Go go!</button>
-	</form>
+    <!-- Tab Content Sections -->
+    <div id="tab1" class="tab-content active">
+      <h2>Tab 1 Content</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+    </div>
+    <div id="tab2" class="tab-content">
+      <h2>Tab 2 Content</h2>
+      <p>Curabitur ac leo nunc. Vestibulum et mauris vel ante finibus maximus. Sed sit amet interdum urna.</p>
+    </div>
+    <div id="tab3" class="tab-content">
+      <h2>Tab 3 Content</h2>
+      <p>Integer condimentum, sapien nec facilisis luctus, ligula dolor venenatis dui, vel bibendum odio ante at mauris.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript to power the dynamic graph and tab functionality -->
+  <script>
+    // --- Dynamic Background Graph with Chart.js ---
+
+    // Get the canvas element and its context
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Resize the canvas to fill the entire window
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Set up initial chart data (a line chart with 20 points)
+    const initialLabels = Array.from({ length: 20 }, (_, i) => i + 1);
+    const initialData = Array.from({ length: 20 }, () => Math.floor(Math.random() * 100));
+
+    const bgChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: initialLabels,
+        datasets: [{
+          label: 'Dynamic Data',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          borderColor: 'rgba(255, 255, 255, 0.5)',
+          data: initialData,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        animation: { duration: 0 },  // Disable animation for smoother updates
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+
+    // Function to update the chart with new random data
+    function updateChart() {
+      // Remove the first (oldest) data point
+      bgChart.data.labels.shift();
+      bgChart.data.datasets[0].data.shift();
+      // Determine the new label (incrementing by 1)
+      const lastLabel = bgChart.data.labels[bgChart.data.labels.length - 1] || 0;
+      const newLabel = lastLabel + 1;
+      // Append the new data point
+      bgChart.data.labels.push(newLabel);
+      bgChart.data.datasets[0].data.push(Math.floor(Math.random() * 100));
+      bgChart.update();
+    }
+
+    // Update the chart every 1000 milliseconds (1 second)
+    setInterval(updateChart, 1000);
+
+    // --- Tabs Functionality ---
+
+    // Select all tab buttons and content sections
+    const tabs = document.querySelectorAll('.tabs li');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Add a click event listener to each tab button
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove 'active' class from all tabs and content sections
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add 'active' class to the clicked tab and its corresponding content
+        tab.classList.add('active');
+        document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
