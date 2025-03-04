@@ -67,11 +67,22 @@
       margin: 0 auto;
       padding: 0 20px;
     }
+    /* Bullet Lists */
     ul.bullets {
       list-style-type: disc;
       margin-left: 20px;
+      margin-bottom: 20px;
     }
-    /* Footer (optional) */
+    h3 {
+      margin-top: 40px;
+      font-size: 1.5em;
+      color: #333;
+    }
+    p.emphasis {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -96,7 +107,7 @@
     <div class="container">
       <h2>Overview</h2>
       <p>
-        Welcome to my portfolio! I am Frederick Zhao, a resourceful Software Engineer with a strong foundation in computer science fundamentals, data structures, algorithms, and distributed systems. Currently pursuing a Bachelor of Computer Engineering (Minor in Artificial Intelligence) at the University of Toronto, I have gained hands-on experience through a full-year internship at YuJa Canada Inc. as well as personal projects like DDmusic, AlgoVisualizer, and my Capstone Project. My expertise spans cross-platform development, API design, cloud-native automation, and real-time systems. Explore my work to learn how I build robust, production-grade solutions.
+        Welcome to my portfolio! I am Frederick Zhao—a passionate Software Engineer with a strong foundation in computer science, distributed systems, and API design. I am currently pursuing a Bachelor of Computer Engineering (Minor in Artificial Intelligence) at the University of Toronto. My experiences span a full-year internship at YuJa Canada Inc. and a variety of personal projects, ranging from DDmusic and AlgoVisualizer to embedded systems and risk portfolio analysis. Explore my work to learn how I build robust, production-grade solutions.
       </p>
     </div>
   </section>
@@ -106,16 +117,16 @@
     <div class="container">
       <h2>Work Experience</h2>
       <h3>YuJa Canada Inc. – Full Stack Software Development Engineer Intern</h3>
-      <p><em>North York, Ontario, Canada | Sep 2023 – Aug 2024</em></p>
+      <p class="emphasis">North York, Ontario, Canada | Sep 2023 – Aug 2024</p>
       <ul class="bullets">
-        <li>Independently led cross-platform application development for macOS and Windows using Objective-C, Swift, C#, and XAML, adding 15+ features for feature parity and robust functionality.</li>
-        <li>Designed and implemented an offline recording feature with auto-activation, a macOS background service, and a cross-platform RPC service to synchronize data between software and data platforms.</li>
-        <li>Developed a custom annotation toolbar for macOS with tailored stroke rendering and erasing capabilities, enhancing interactive recording experiences.</li>
+        <li>Independently led cross-platform application development for macOS and Windows using Objective-C, Swift, C#, and XAML, adding 15+ features for robust functionality.</li>
+        <li>Designed and implemented an offline recording feature with auto-activation and a cross-platform RPC service to synchronize data exchanges.</li>
+        <li>Developed a custom annotation toolbar for macOS with tailored stroke rendering and erasing capabilities to enhance interactive recording.</li>
         <li>Optimized system performance by reducing CPU and memory usage by 10% during live streaming and recording.</li>
-        <li>Integrated AWS-based logging with Sentry to monitor user login events and rapidly diagnose issues, improving overall system reliability.</li>
+        <li>Integrated AWS-based logging with Sentry to monitor user login events and diagnose issues rapidly, enhancing overall reliability.</li>
         <li>Implemented RESTful API endpoints to facilitate efficient data sharing among internal modules and external systems.</li>
-        <li>Automated release workflows using GitHub Actions to generate QA release packages after each merge, ensuring high code quality through regular code reviews.</li>
-        <li>Leveraged Python to develop automation scripts for performance monitoring and log analysis, enabling proactive incident detection and rapid resolution.</li>
+        <li>Automated release workflows with GitHub Actions, generating QA release packages after each merge and ensuring high-quality code via rigorous reviews.</li>
+        <li>Leveraged Python to create automation scripts for performance monitoring and log analysis, enabling proactive incident detection.</li>
       </ul>
     </div>
   </section>
@@ -125,30 +136,78 @@
     <div class="container">
       <h2>Projects</h2>
       
+
+      <h3>Capstone Project: Relational Debugger</h3>
+      <p class="emphasis">Sep 2024 – Present</p>
+      <ul class="bullets">
+        <li>Developing a debugging tool to identify performance bottlenecks using advanced data structures and algorithmic analysis.</li>
+        <li>Designed and implemented RESTful API endpoints for real-time data retrieval, storing profiling data in PostgreSQL.</li>
+        <li>Iteratively refined functionality in an Agile environment, enhancing the tool's robustness and scalability.</li>
+      </ul>
+      
+      <h3>Risk Portfolio Analysis</h3>
+      <p class="emphasis">Spet 2024 – Dec 2024</p>
+      <ul class="bullets">
+        <li>Analyzed historical market data using Python to model portfolio risk and assess vulnerabilities.</li>
+        <li>Performed regression analysis and scenario simulations to identify key risk factors.</li>
+        <li>Developed automated tools for robust backtesting and validation of risk management frameworks.</li>
+      </ul>
+
       <h3>DDmusic</h3>
-      <p><em>Jan 2024 – Present</em></p>
+      <p class="emphasis">Jan 2024 – Present</p>
       <ul class="bullets">
         <li>Automated extraction of pop music data—including songs and lyrics—using Python, Selenium, Playwright, and Chrome Driver for timely and accurate content updates.</li>
-        <li>Leveraged SQL (MySQL) for efficient storage and retrieval of music metadata; maintained daily automation tasks on AWS.</li>
-        <li>Developed an end-to-end video generation pipeline that merged audio with background images into MP4 videos, reducing production time by 80% and generating 10 videos daily.</li>
-        <li>Integrated multiple API transports and formats, including REST and GraphQL, while prototyping microservices in Go to support distributed, event-driven communication with Kafka, SNS, and SQS.</li>
+        <li>Leveraged SQL (MySQL) for efficient storage and retrieval of music metadata, maintaining daily automation tasks on AWS.</li>
+        <li>Developed an end-to-end video generation pipeline merging audio with background images into MP4 videos, reducing production time by 80% and generating 10 videos daily.</li>
+        <li>Integrated API endpoints using multiple transports (REST, GraphQL) and prototyped microservices in Go, supporting distributed, event-driven communication with Kafka, SNS, and SQS.</li>
       </ul>
 
       <h3>AlgoVisualizer</h3>
-      <p><em>Sep 2023 – Present</em></p>
+      <p class="emphasis">Sep 2023 – Present</p>
       <ul class="bullets">
         <li>Designed and built a scalable web-based algorithm visualizer using React, JavaScript, and CSS for interactive visualization of complex algorithms.</li>
         <li>Developed RESTful API endpoints and implemented GraphQL for efficient data fetching and real-time updates.</li>
-        <li>Collaborated with an Agile team to iteratively refine the interface based on user feedback, ensuring a responsive and intuitive user experience.</li>
+        <li>Collaborated with an Agile team to iterate on the user interface, ensuring a responsive and intuitive experience.</li>
+      </ul>
+      
+      
+
+      
+      
+      <h3>Easyp2p</h3>
+      <p class="emphasis">Sep 2023 – Present</p>
+      <ul class="bullets">
+        <li>Developed a distributed communication platform enabling direct, real-time user interactions without a central server.</li>
+        <li>Implemented real-time messaging and notification features with low latency and high responsiveness.</li>
+        <li>Integrated with distributed systems to ensure scalability and reliability across multiple nodes.</li>
       </ul>
 
-      <h3>Capstone Project: Relational Debugger</h3>
-      <p><em>University of Toronto | Sep 2024 – Present</em></p>
+      <h3>Computer Security Research</h3>
+      <p class="emphasis">May 2023 – Aug 2023</p>
       <ul class="bullets">
-        <li>Developing a debugging tool that identifies performance bottlenecks using advanced data structures and algorithmic analysis.</li>
-        <li>Designed RESTful API endpoints for real-time data retrieval, with profiling data stored in PostgreSQL for efficient analysis.</li>
-        <li>Iteratively refining the tool's functionality in an Agile environment to enhance robustness and scalability in production-like scenarios.</li>
+        <li>Researched computer security vulnerabilities including buffer overflow, SQL injection, and cross-site scripting.</li>
+        <li>Developed a website scanning tool that improved vulnerability detection speed by 20%.</li>
+        <li>Implemented dynamic IP rotation to evade detection and enhance scanning efficiency.</li>
       </ul>
+      
+      <h3>Embedded Systems Project</h3>
+      <p class="emphasis">Jan 2022 – Apr 2022</p>
+      <ul class="bullets">
+        <li>Designed and implemented real-time embedded firmware for STM32 microcontrollers using C and C++.</li>
+        <li>Developed low-level drivers and software state machines for interfacing with hardware peripherals.</li>
+        <li>Utilized RTOS concepts and interpreted hardware timing diagrams to ensure proper system operation.</li>
+      </ul>
+      
+      <h3>Assembly Language Projects</h3>
+      <p class="emphasis">Jan 2022 – Apr 2022</p>
+      <ul class="bullets">
+        <li>Developed utilities and small games using Assembly language on FPGA boards.</li>
+        <li>Optimized low-level code for performance and resource efficiency.</li>
+        <li>Enhanced understanding of hardware-level programming and digital logic design.</li>
+      </ul>
+      
+      
+      
     </div>
   </section>
 
@@ -157,22 +216,20 @@
     <div class="container">
       <h2>Blog</h2>
       <p>
-        Welcome to my blog! Here I share my insights on software engineering, embedded systems, and the latest developments in technology. Stay tuned for posts on project breakdowns, coding best practices, and tips on leveraging modern tools to build robust systems.
+        Welcome to my blog! Here, I share insights on software engineering, embedded systems, and the latest technology trends. Check back regularly for project breakdowns, best practices, and more.
       </p>
-      <p>
-        [Blog posts coming soon...]
-      </p>
+      <p>[Blog posts coming soon...]</p>
     </div>
   </section>
 
-  <!-- Footer (optional) -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Frederick Zhao. All rights reserved.</p>
   </footer>
 
   <!-- Optional JavaScript for enhancements -->
   <script>
-    // Additional functionality such as dynamic loading or a scroll-to-top button can be added here.
+    // Future enhancements (e.g., dynamic content loading) can be added here.
   </script>
 </body>
 </html>
